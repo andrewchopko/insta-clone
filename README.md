@@ -3,7 +3,7 @@
 Test task for enhancement developer skills on Magisoft iternship. It includes working with different front-end tools (Mostly React and sagas for async side-effects) and back-end tools (different database types, redis, real-time).
 
 ## Required OS
-Forgot about shit windows OS. Install Linux as primary OS or make dual boot system.
+Forgot about shit windows OS. Install Linux as primary OS or use dual boot system.
 
 ### Tools
 #### Front-end
@@ -16,6 +16,8 @@ Forgot about shit windows OS. Install Linux as primary OS or make dual boot syst
 * Jest
 * Enzyme
 * Websockets (socket.io-client)
+* React StoryBook ([Docs](https://storybook.js.org/))
+* React Router
 
 Follow [Airbnb style-guides](https://github.com/airbnb/javascript/tree/master/react).
 
