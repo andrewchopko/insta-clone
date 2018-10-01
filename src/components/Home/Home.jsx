@@ -1,40 +1,32 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
+import Header from "./Header";
+
 
 export class Home extends Component {
   render() {
-    return (
-      <Header>
-        <Item>shitty insta app</Item>
-        <Item>anime</Item>
-        <Item>anime</Item>
-        <Item>anime</Item>
-        <Item>anime</Item>
-      </Header>
-    );
+    return <Wrapper>
+      <Header />
+      <Text>Nothing to do here yet.</Text>
+      </Wrapper>;
   }
 }
 
-const Header = styled.p`
+const Wrapper = styled.section`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   width: 100%;
   height: auto;
-  margin: 0;
-  margin-left: 10px;
-  margin-top: 10px;
-  font-size: 1.3em;
-  background: white;
+  background: #fafafa;
+  font-family: "Krub", sans-serif;
 `;
-
-const Item = styled.section`
-  width: auto;
-  height: auto;
-  margin-left: 15px;
-  padding: 5px;
-  border: 1.5px solid red;
-  color: black;
+const Text = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 100px;
+  margin-bottom: 1000px;
 `;
 
 const mapStateToProps = state => {
