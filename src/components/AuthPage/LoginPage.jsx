@@ -1,27 +1,48 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import IPhone from "../assets/apple.png";
+import { Link } from "react-router-dom";
 
 export class AuthPage extends Component {
+
+  state = { 
+      username: '',
+      password: ''
+    };
+
+  handleInput = e => {
+    this.setState({
+      [e.target.id]: e.target.value
+    });
+    console.log(this.state.username)
+  };
+  handleFormData = () => {
+    //...
+  }
+
   render() {
     return <Wrapper>
         <Img src={IPhone} alt="Cover with IPhone" />
         <Container>
           <LogInCard>
             <Logo>Instagram</Logo>
-            <Input placeholder="Username" />
-            <Input placeholder="Password" />
-            <Button>Log In</Button>
+            <Ann>Login in to Instagram so you can connect</Ann>
+            <Input type="text" id="username" value={this.state.username} placeholder="Username" onChange={this.handleInput} />
+            <Input type="password" id="password" value={this.state.password} placeholder="Password" onChange={this.handleInput} />
+          <Button onClick={this.handleFormData}>Log In</Button>
             <Div>Forgot password?</Div>
           </LogInCard>
           <SignUpCard>
-            Don't have an account? <A>Sign Up</A>
+            Don't have an account? 
+            <A>
+              <Link to="/signup">Sign Up</Link>
+            </A>
           </SignUpCard>
-          <GetApp>Get the App</GetApp>
+          {/* <GetApp>Get the App</GetApp>
           <AppIcons>
             <GetAppStore>Download on the AppStore</GetAppStore>
             <GetGooglePlayIcon>GET IT ON GOOGLE PLAY</GetGooglePlayIcon>
-          </AppIcons>
+          </AppIcons> */}
         </Container>
         <Footer>
           <Ul>
@@ -62,7 +83,7 @@ const Wrapper = styled.div`
   width: 100%;
   height: 100%;
   margin: 0;
-  background: #f7f9f6;
+    
   font-family: "Krub", sans-serif;
   box-sizing: border-box;
   @media (max-width: 700px) {
@@ -113,7 +134,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   position: absolute;
-  top: 90px;
+  top: 120px;
   left: 50%;
   height: auto;
   box-sizing: border-box;
@@ -133,8 +154,11 @@ const LogInCard = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  width: auto;
-  height: 300px;
+  width: 400px;
+  height: auto;
+  padding: 15px;
+  padding-top: 30px;
+  padding-bottom: 20px;
   border-radius: 5px;
   box-shadow: 0px 1px 5px #c7c9cc;
   background: white;
@@ -145,8 +169,23 @@ const Logo = styled.div`
   justify-content: center;
   width: 80%;
   height: 10%;
-  padding: 5px;
+  padding-bottom: 10px;
+  font-family: "Pacifico", cursive;
+  font-size: 2rem;
+  color: #5d5f63;
   box-sizing: border-box;
+`;
+const Ann = styled.div`
+  display: flex;
+  width: auto;
+  padding: 10px;
+  margin-top: 5px;
+  text-align: center;
+  font-size: 0.8rem;
+  font-weight: 550;
+  @media (max-width: 700px) {
+    margin-top: 10px;
+  }
 `;
 const Input = styled.input`
   width: 80%;
@@ -176,6 +215,8 @@ const Button = styled.button`
   background: #3897f0;
   font-family: "Krub", sans-serif;
   box-sizing: border-box;
+  outline: none;
+  cursor: pointer;
 `;
 const Div = styled.div`
   display: flex;
@@ -185,7 +226,7 @@ const Div = styled.div`
   padding: 10px;
   padding-left: 10px;
   padding-right: 20px;
-  margin-top: 5px;
+  margin-top: 15px;
   font-size: 0.7rem;
   @media (max-width: 700px) {
     margin-top: 10px;
@@ -287,4 +328,12 @@ const Li = styled.li`
   box-sizing: border-box;
 `;
 
-export default AuthPage;
+
+const mapDispatchToProps = dispatch => {
+  return {
+    gettingUsernameAndPassword: (username, password) => {
+      dispatch({ type: "GET_USER_DATA" });
+    }
+  };
+};
+export default connect(mapDispatchToProps)(LoginPage);

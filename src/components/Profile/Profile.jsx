@@ -14,22 +14,28 @@ export class Profile extends Component {
               <ProfileEdit>Редактировать профиль</ProfileEdit>
             </NameAndEdit>
             <Ul>
-              <Li>0 публикаций</Li>
-              <Li>0 подписчики</Li>
-              <Li>0 подписки</Li>
+              <LiS>0 публикаций</LiS>
+              <LiS>0 подписчики</LiS>
+              <LiS>0 подписки</LiS>
             </Ul>
             <RealName>Андрій Дідківський</RealName>
           </ProfileContainer>
         </User>
         <Bar>
           <PublicsBar>
-            <Ul>
               <Li>Публикаций</Li>
               <Li>IGTV</Li>
               <Li>Сохранено</Li>
               <Li>Отметки</Li>
-            </Ul>
           </PublicsBar>
+          <Content>
+            <Item />
+            <Item />
+            <Item />
+            <Item />
+            <Item />
+            <Item />
+          </Content>
         </Bar>
       </Wrapper>;
   }
@@ -53,9 +59,9 @@ const ProfileImg = styled.div`
   width: 150px;
   height: 150px;
   margin-top: 0;
-  margin-left: 55px;
+  margin-left: 100px;
   border-radius: 50%;
-  border: 2px solid gray;
+  border: 1.5px solid #5d5f63;
 `;
 const ProfileContainer = styled.div`
   display: flex;
@@ -90,6 +96,8 @@ const ProfileEdit = styled.button`
   margin-left: 20px;
   border-radius: 5px;
   font-size: 0.7rem;
+  outline: none;
+  cursor: pointer;
   font-family: "Krub", sans-serif;
 `;
 const Ul = styled.ul`
@@ -102,17 +110,16 @@ const Ul = styled.ul`
   padding: 0;
   list-style: none;
 `;
-const Li = styled.li`
+const LiS = styled.li`
   display: inline;
   width: auto;
   height: auto;
   margin-right: 40px;
   padding-top: 10px;
   font-size: 0.9rem;
+  transition: 0.3s;
+  border-top: 1px solid transparent;
   cursor: pointer;
-  &:hover {
-    border-top: 1px solid #8D8D8D;
-  }
 `;
 const RealName = styled.div`
   display: flex;
@@ -124,6 +131,7 @@ const RealName = styled.div`
 
 const Bar = styled.div`
   display: flex;
+  flex-direction: column;
   width: 60%;
   height: auto;
   margin: auto;
@@ -132,11 +140,43 @@ const Bar = styled.div`
 `;
 const PublicsBar = styled.div`
   display: flex;
-  width: 60%;
+  justify-content: space-between;
+  width: 50%;
   height: 30px;
   margin: auto;
-  margin-bottom: 1000px;
-  padding-left: 50px;
 `;
+const Li = styled.div`
+  display: flex;
+  width: auto;
+  height: auto;
+  margin: auto;
+  padding-top: 10px;
+  font-size: 0.9rem;
+  transition: 0.3s;
+  border-top: 1px solid transparent;
+  cursor: pointer;
+  &:hover {
+    transition: 0.3s;
+    border-top: 1px solid #8d8d8d;
+  }
+`;
+const Content = styled.div`
+  display: grid;
+  width: 100%;
+  height: auto;
+  margin: auto;
+  margin: auto;
+  margin-top: 50px;
+  background: transparent;
+  grid-gap: 20px;
+  grid-template-columns: 3fr 3fr 3fr;
+  grid-template-rows: repeat(1, 300px); 
+`;
+const Item = styled.img`
+  width: 100%;
+  height: 300px;
+  background: white;
+`;
+
 
 export default Profile;

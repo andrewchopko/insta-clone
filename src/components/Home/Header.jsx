@@ -10,23 +10,27 @@ export class Header extends Component {
             <Icon>
               <i width="40px" height="40px" className="fab fa-instagram" />
             </Icon>
-          <Item><Link to="/">Insta clone</Link></Item>
+            <Item>
+              <Link to="/" style={{ textDecoration: "none", color: "#454f5e", fontWeight: '500' }}>Insta clone</Link>
+            </Item>
           </HeaderLogo>
           <HeaderSearch>
             <HeaderSearchInput type="text" placeholder="пошук" />
           </HeaderSearch>
           <HeaderNav>
             <Icon>
-              <i className="far fa-heart" />
+              <Link to="/" style={{ textDecoration: "none", color: "#454f5e" }}>
+                <i className="far fa-heart" />
+              </Link>
             </Icon>
             <Icon>
-              <Link to="/auth">
+              <Link to="/login" style={{ textDecoration: "none", color: "#454f5e" }}>
                 <i className="far fa-compass" />
               </Link>
             </Icon>
 
             <Icon>
-              <Link to="/profile">
+              <Link to="/profile" style={{ textDecoration: "none", color: "#454f5e" }}>
                 <i className="far fa-user" />
               </Link>
             </Icon>
@@ -35,6 +39,7 @@ export class Header extends Component {
       </MainHeader>;
   }
 }
+
 const Icon = styled.div`
   display: flex;
   align-items: center;
@@ -63,6 +68,9 @@ const Container = styled.section`
   flex-direction: row;
   width: 61%;
   margin: auto;
+  @media (max-width: 600px) {
+    width: 98%;
+  }
 `;
 const HeaderLogo = styled.div`
   display: flex;
@@ -71,8 +79,13 @@ const HeaderLogo = styled.div`
   width: 33.3%;
   height: auto;
   margin: 0;
+  color: #5d5f63;
+  font-family: "Pacifico", cursive;
   background: white;
   box-sizing: border-box;
+  @media (max-width: 600px) {
+    width: 50%;
+  }
 `;
 const HeaderSearch = styled.div`
   display: flex;
@@ -83,6 +96,9 @@ const HeaderSearch = styled.div`
   margin: 0;
   background: white;
   box-sizing: border-box;
+  @media (max-width: 600px) {
+    display: none;
+  }
 `;
 const HeaderSearchInput = styled.input`
   width: 200px;
@@ -103,6 +119,9 @@ const HeaderNav = styled.div`
   margin-right: 10px;
   background: white;
   box-sizing: border-box;
+  @media (max-width: 600px) {
+    width: 50%;
+  }
 `;
 
 const Item = styled.div`
