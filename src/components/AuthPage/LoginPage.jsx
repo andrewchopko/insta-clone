@@ -2,40 +2,59 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import IPhone from "../assets/apple.png";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { gettingLogInData } from "../../store/actions/loginAction";
 
-export class AuthPage extends Component {
-
-  state = { 
-      username: '',
-      password: ''
-    };
+export class LoginPage extends Component {
+  state = {
+    username: "",
+    password: ""
+  };
 
   handleInput = e => {
     this.setState({
       [e.target.id]: e.target.value
     });
-    console.log(this.state.username)
   };
   handleFormData = () => {
-    //...
-  }
+    this.props.gettingLogInData(this.state.username, this.state.password);
+  };
 
   render() {
-    return <Wrapper>
+    return (
+      <Wrapper>
         <Img src={IPhone} alt="Cover with IPhone" />
         <Container>
           <LogInCard>
             <Logo>Instagram</Logo>
             <Ann>Login in to Instagram so you can connect</Ann>
-            <Input type="text" id="username" value={this.state.username} placeholder="Username" onChange={this.handleInput} />
-            <Input type="password" id="password" value={this.state.password} placeholder="Password" onChange={this.handleInput} />
-          <Button onClick={this.handleFormData}>Log In</Button>
+            <Input
+              type="text"
+              id="username"
+              value={this.state.username}
+              placeholder="Username"
+              onChange={this.handleInput}
+            />
+            <Input
+              type="password"
+              id="password"
+              value={this.state.password}
+              placeholder="Password"
+              onChange={this.handleInput}
+            />
+            <Button onClick={this.handleFormData}>Log In</Button>
             <Div>Forgot password?</Div>
           </LogInCard>
           <SignUpCard>
-            Don't have an account? 
+            Don't have an account?
             <A>
-              <Link to="/signup">Sign Up</Link>
+              <Link
+                to="/signup"
+                style={{ color: "#3294EA", fontWeight: "700" }}
+              >
+                Sign Up
+              </Link>
             </A>
           </SignUpCard>
           {/* <GetApp>Get the App</GetApp>
@@ -56,12 +75,12 @@ export class AuthPage extends Component {
             <Li>Anime</Li>
           </Ul>
         </Footer>
-      </Wrapper>;
+      </Wrapper>
+    );
   }
 }
-const A = styled.a`
+const A = styled.div`
   margin-left: 5px;
-  color: blue;
   cursor: pointer;
 `;
 
@@ -83,70 +102,30 @@ const Wrapper = styled.div`
   width: 100%;
   height: 100%;
   margin: 0;
-    
+  background: #f2f2f2;
+  font-weight: 500;
   font-family: "Krub", sans-serif;
   box-sizing: border-box;
   @media (max-width: 700px) {
-    background: linear-gradient(136deg, #d3186e, #c301d3, #d39101);
-    background-size: 600% 600%;
-
-    -webkit-animation: AnimationName 11s ease infinite;
-    -moz-animation: AnimationName 11s ease infinite;
-    animation: AnimationName 11s ease infinite;
-
-    @-webkit-keyframes AnimationName {
-      0% {
-        background-position: 0% 7%;
-      }
-      50% {
-        background-position: 100% 94%;
-      }
-      100% {
-        background-position: 0% 7%;
-      }
-    }
-    @-moz-keyframes AnimationName {
-      0% {
-        background-position: 0% 7%;
-      }
-      50% {
-        background-position: 100% 94%;
-      }
-      100% {
-        background-position: 0% 7%;
-      }
-    }
-    @keyframes AnimationName {
-      0% {
-        background-position: 0% 7%;
-      }
-      50% {
-        background-position: 100% 94%;
-      }
-      100% {
-        background-position: 0% 7%;
-      }
-    }
+    background: linear-gradient(to bottom right, #5b5368, #a43931);
   }
 `;
 
 const Container = styled.div`
   display: flex;
   flex-direction: column;
+  width: 400px;
   position: absolute;
-  top: 120px;
+  top: 100px;
   left: 50%;
   height: auto;
   box-sizing: border-box;
   z-index: 20;
-  @media (max-width: 700px) {  
+  @media (max-width: 700px) {
+    position: static;
     margin: auto;
-    width: 95%;
-    top: 100px;
-    left: 2.5%;
-    height: auto;
-    box-sizing: border-box;
-    z-index: 20;
+    width: 96%;
+    left: 0;
   }
 `;
 const LogInCard = styled.div`
@@ -154,15 +133,26 @@ const LogInCard = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  width: 400px;
-  height: auto;
-  padding: 15px;
   padding-top: 30px;
-  padding-bottom: 20px;
+  padding-bottom: 5px;
   border-radius: 5px;
-  box-shadow: 0px 1px 5px #c7c9cc;
+  font-weight: 700;
   background: white;
+  box-shadow: 1px 3px 10px #e2e2e2;
   box-sizing: border-box;
+  @media (max-width: 700px) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding-top: 30px;
+    padding-bottom: 5px;
+    border-radius: 5px;
+    font-weight: 700;
+    box-shadow: none;
+    background: transparent;
+    box-sizing: border-box;
+  }
 `;
 const Logo = styled.div`
   display: flex;
@@ -172,19 +162,38 @@ const Logo = styled.div`
   padding-bottom: 10px;
   font-family: "Pacifico", cursive;
   font-size: 2rem;
-  color: #5d5f63;
+  color: #454f5e;
+  font-weight: 500;
   box-sizing: border-box;
+  @media (max-width: 700px) {
+    display: flex;
+    justify-content: center;
+    width: 80%;
+    height: 10%;
+    padding-bottom: 10px;
+    font-family: "Pacifico", cursive;
+    font-size: 2.5rem;
+    color: white;
+    box-sizing: border-box;
+  }
 `;
 const Ann = styled.div`
   display: flex;
   width: auto;
   padding: 10px;
-  margin-top: 5px;
+  margin-bottom: 15px;
   text-align: center;
+  color: #6d6d6d;
   font-size: 0.8rem;
   font-weight: 550;
   @media (max-width: 700px) {
-    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    width: 80%;
+    height: 10%;
+    padding-bottom: 10px;
+    color: white;
+    box-sizing: border-box;
   }
 `;
 const Input = styled.input`
@@ -192,16 +201,21 @@ const Input = styled.input`
   padding: 10px;
   padding-left: 10px;
   padding-right: 20px;
-  margin-top: 10px;
+  margin-bottom: 20px;
   outline: 0;
-  border: 1.1px solid #d9dbd8;
+  color: #454f5e;
+  border-radius: 5px;
+  background: transparent;
+  border: 1.1px solid #e2e2e2;
   box-sizing: border-box;
+  &::placeholder {
+    color: #9f9f9f;
+  }
   @media (max-width: 700px) {
-    width: 80%;
-    padding: 15px;
-    padding-left: 10px;
-    padding-right: 20px;
-    margin-top: 10px;
+    color: #e2e2e2;
+    &::placeholder {
+      color: #e2e2e2;
+    }
   }
 `;
 const Button = styled.button`
@@ -209,14 +223,18 @@ const Button = styled.button`
   padding: 10px;
   padding-left: 10px;
   padding-right: 20px;
-  margin-top: 10px;
   color: white;
   border: none;
-  background: #3897f0;
+  background: #3294ea;
   font-family: "Krub", sans-serif;
+  font-size: 1rem;
   box-sizing: border-box;
   outline: none;
   cursor: pointer;
+  @media (max-width: 700px) {
+    color: #e2e2e2;
+    background: transparent;
+  }
 `;
 const Div = styled.div`
   display: flex;
@@ -227,9 +245,13 @@ const Div = styled.div`
   padding-left: 10px;
   padding-right: 20px;
   margin-top: 15px;
+  margin-bottom: 10px;
   font-size: 0.7rem;
+  color: #6d6d6d;
+  cursor: pointer;
   @media (max-width: 700px) {
     margin-top: 10px;
+    color: #e2e2e2;
   }
 `;
 const SignUpCard = styled.div`
@@ -238,13 +260,19 @@ const SignUpCard = styled.div`
   justify-content: center;
   width: auto;
   height: auto;
+  margin-top: 15px;
   padding: 15px;
-  margin-top: 10px;
+  color: #6d6d6d;
   font-size: 0.8rem;
-  box-shadow: 0px 1px 5px #c7c9cc;
   border-radius: 5px;
   background: white;
+  box-shadow: 1px 3px 10px #e2e2e2;
   box-sizing: border-box;
+  @media (max-width: 700px) {
+    background: none;
+    box-shadow: none;
+    color: #e2e2e2;
+  }
 `;
 const GetApp = styled.div`
   display: flex;
@@ -328,12 +356,16 @@ const Li = styled.li`
   box-sizing: border-box;
 `;
 
-
-const mapDispatchToProps = dispatch => {
+const mapStateToProps = state => {
   return {
-    gettingUsernameAndPassword: (username, password) => {
-      dispatch({ type: "GET_USER_DATA" });
-    }
+    username: state.username,
+    password: state.password
   };
 };
-export default connect(mapDispatchToProps)(LoginPage);
+const matchDispatchToProps = dispatch => {
+  return bindActionCreators({ gettingLogInData: gettingLogInData }, dispatch);
+};
+export default connect(
+  mapStateToProps,
+  matchDispatchToProps
+)(LoginPage);

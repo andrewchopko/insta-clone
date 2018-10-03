@@ -50,9 +50,14 @@ const Wrapper = styled.section`
 const User = styled.div`
   display: flex;
   width: 60%;
-  height: 200px;
+  height: auto;
   margin: auto;
-  margin-top: 55px;
+  margin-top: 25px;
+  @media (max-width: 700px) {
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+  }
 `;
 const ProfileImg = styled.div`
   display: flex;
@@ -62,14 +67,24 @@ const ProfileImg = styled.div`
   margin-left: 100px;
   border-radius: 50%;
   border: 1.5px solid #5d5f63;
+  @media (max-width: 700px) {
+    margin: auto;
+  }
 `;
 const ProfileContainer = styled.div`
   display: flex;
+  justify-content: center;
   flex-direction: column;
   width: auto;
   height: auto;
   margin-left: 100px;
   font-size: 1.5rem;
+  @media (max-width: 700px) {
+    margin-left: 0px;
+    width: 90%;
+    margin: auto;
+    margin-top: 20px;
+  }
 `;
 const NameAndEdit = styled.div`
   display: flex;
@@ -105,10 +120,13 @@ const Ul = styled.ul`
   justify-content: space-between;
   flex-direction: row;
   width: auto;
-  height: 30px;
+  height: auto;
   margin: 0;
   padding: 0;
   list-style: none;
+  @media (max-width: 700px) {
+    margin-top: 10px;
+  }
 `;
 const LiS = styled.li`
   display: inline;
@@ -125,8 +143,11 @@ const RealName = styled.div`
   display: flex;
   width: auto;
   height: auto;
-  margin-top: 30px;
-  font-size: 0.9rem;
+  margin-top: 20px;
+  font-size: 1rem;
+  @media (max-width: 700px) {
+    display: none;
+  }
 `;
 
 const Bar = styled.div`
@@ -137,6 +158,9 @@ const Bar = styled.div`
   margin: auto;
   margin-top: 15px;
   border-top: 1px solid #f4f4f4;
+  @media (max-width: 700px) {
+    width: 95%;
+  }
 `;
 const PublicsBar = styled.div`
   display: flex;
@@ -144,6 +168,10 @@ const PublicsBar = styled.div`
   width: 50%;
   height: 30px;
   margin: auto;
+  @media (max-width: 700px) {
+    width: 90%;
+    margin-top: 50px;
+  }
 `;
 const Li = styled.div`
   display: flex;
@@ -166,16 +194,24 @@ const Content = styled.div`
   height: auto;
   margin: auto;
   margin: auto;
-  margin-top: 50px;
+  margin-top: 40px;
+  margin-bottom: 40px;
   background: transparent;
   grid-gap: 20px;
   grid-template-columns: 3fr 3fr 3fr;
-  grid-template-rows: repeat(1, 300px); 
+  grid-template-rows: repeat(1, 300px);
+  @media (max-width: 700px) {
+    display: flex;
+    flex-direction: column;
+  }
 `;
 const Item = styled.img`
   width: 100%;
   height: 300px;
   background: white;
+  @media (max-width: 700px) {
+    margin-bottom: 10px;
+  }
 `;
 
 

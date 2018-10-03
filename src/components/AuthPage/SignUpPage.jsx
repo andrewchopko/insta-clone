@@ -1,37 +1,77 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import styled from "styled-components";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { gettingSignUpData } from "../../store/actions/signupAction";
 
 export class SignUpPage extends Component {
-  
-  state = { 
-    chosen: true 
+  state = {
+    chosen: true
   };
-  
+
+  handleInput = e => {
+    this.setState({
+      [e.target.id]: e.target.value
+    });
+  };
+  handleFormData = () => {
+    this.props.gettingSignUpData(
+      this.state.email,
+      this.state.fullname,
+      this.state.username,
+      this.state.password
+    );
+  };
 
   render() {
-    return <Wrapper>
+    return (
+      <Wrapper>
         <Container>
           <Logo>Instagram</Logo>
           <Div>Sign up to see photos and videos from your friends</Div>
-          {this.state.chosen ? 
-          <SignUp>
-            <FacebookButton >Sign Up with Facebook</FacebookButton>
-            <H1>OR</H1>
-            <Button onClick={() => this.setState({ chosen: false })} >Sign Up with Phone or Email</Button>
-          </SignUp>
-          
-          : 
-          <SignUpCard>
-            <Input type="email" placeholder="Email address" />
-            <Input type="text" placeholder="Full name" />
-            <Input type="text" placeholder="Username" />
-            <Input type="password" placeholder="Password" />
-            <Button>Sign Up</Button>
-            <Div>By signing up, you agree to our Terms &amp; Privacy Policy</Div>
-          </SignUpCard>}
-          
+          {this.state.chosen ? (
+            <SignUp>
+              <FacebookButton>Sign Up with Facebook</FacebookButton>
+              <H1>OR</H1>
+              <Button onClick={() => this.setState({ chosen: false })}>
+                Sign Up with Phone or Email
+              </Button>
+            </SignUp>
+          ) : (
+            <SignUpCard>
+              <Input
+                type="email"
+                id="email"
+                placeholder="Email address"
+                onChange={this.handleInput}
+              />
+              <Input
+                type="text"
+                id="fullname"
+                placeholder="Full name"
+                onChange={this.handleInput}
+              />
+              <Input
+                type="username"
+                id="username"
+                placeholder="Username"
+                onChange={this.handleInput}
+              />
+              <Input
+                type="password"
+                id="password"
+                placeholder="Password"
+                onChange={this.handleInput}
+              />
+              <Button onClick={this.handleFormData}>Sign Up</Button>
+              <Div>
+                By signing up, you agree to our Terms &amp; Privacy Policy
+              </Div>
+            </SignUpCard>
+          )}
         </Container>
-      </Wrapper>;
+      </Wrapper>
+    );
   }
 }
 
@@ -57,7 +97,7 @@ const Container = styled.div`
   width: 500px;
   height: auto;
   box-sizing: border-box;
-  
+
   z-index: 20;
   @media (max-width: 700px) {
     margin: auto;
@@ -87,6 +127,7 @@ const Logo = styled.div`
   width: 100%;
   height: 10%;
   padding: 5px;
+  color: white;
   font-family: "Pacifico", cursive;
   text-align: center;
   box-sizing: border-box;
@@ -206,5 +247,16 @@ const Button = styled.button`
   cursor: pointer;
 `;
 
-
-export default SignUpPage
+const mapStateToProps = state => {
+  return {
+    username: state.username,
+    password: state.password
+  };
+};
+const matchDispatchToProps = dispatch => {
+  return bindActionCreators({ gettingSignUpData: gettingSignUpData }, dispatch);
+};
+export default connect(
+  mapStateToProps,
+  matchDispatchToProps
+)(SignUpPage);
