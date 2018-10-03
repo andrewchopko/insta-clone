@@ -5,14 +5,16 @@ import { createStore, applyMiddleware } from "redux";
 import createSagaMiddleware from "redux-saga";
 import { Provider } from 'react-redux';
 import rootReducer from "./store/reducers/rootReducer";
-import { someSagaFunc } from "./sagas/sagas";
+// import { someSagaFunc } from "./sagas/sagas";
 
 
-const sagaMiddleware = createSagaMiddleware();
+// const sagaMiddleware = createSagaMiddleware();
 
 function configureStore() {
-  const store = createStore(rootReducer, applyMiddleware(sagaMiddleware));
-  sagaMiddleware.run(someSagaFunc);
+  const store = createStore(rootReducer
+    // , applyMiddleware(sagaMiddleware)
+    );
+  // sagaMiddleware.run(someSagaFunc);
   if (module.hot) {
     // Enable Webpack hot module replacement for reducers
     module.hot.accept("./store/reducers/rootReducer", () => {

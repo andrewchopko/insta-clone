@@ -2,15 +2,14 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
 import Header from "./Header";
+import Line from '../Line/Line'
 
 export class Home extends Component {
   render() {
-    return (
-      <Wrapper>
-        <Header />
-        <Text>Nothing to do here yet.</Text>
-      </Wrapper>
-    );
+    return <Wrapper>
+      <Header />
+      <Line/>
+      </Wrapper>;
   }
 }
 
@@ -30,5 +29,17 @@ const Text = styled.div`
   margin-bottom: 1000px;
 `;
 
+const mapStateToProps = state => {
+  return {
+    list: state.list
+  };
+};
 
+const mapDispatchToProps = dispatch => {
+  return {
+    someAction: () => {
+      dispatch({ type: "SOME_ACTION" });
+    }
+  };
+};
 export default Home;
