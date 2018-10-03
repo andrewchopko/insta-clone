@@ -2,13 +2,13 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
 import Header from "./Header";
-
+import Line from '../Line/Line'
 
 export class Home extends Component {
   render() {
     return <Wrapper>
       <Header />
-      <Text>Nothing to do here yet.</Text>
+      <Line/>
       </Wrapper>;
   }
 }
@@ -42,7 +42,4 @@ const mapDispatchToProps = dispatch => {
     }
   };
 };
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Home);
+export default Home;

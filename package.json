@@ -20,6 +20,8 @@
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.1.0",
+    "@babel/plugin-transform-regenerator": "^7.0.0",
+    "@babel/plugin-transform-runtime": "^7.1.0",
     "@babel/preset-env": "^7.1.0",
     "@babel/preset-es2016": "^7.0.0-beta.53",
     "@babel/preset-react": "^7.0.0",
@@ -28,14 +30,17 @@
     "babel-loader": "^8.0.0",
     "babel-plugin-styled-components": "^1.7.1",
     "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-es2016": "^7.0.0",
     "babel-preset-react": "^6.24.1",
+    "babel/polyfill": "^7.0.0",
     "enzyme": "^3.6.0",
     "enzyme-adapter-react-16": "^1.5.0",
     "file-loader": "^2.0.0",
     "jest": "^23.6.0",
     "react-test-renderer": "^16.5.2",
+    "regenerator-runtime": "^0.12.1",
     "url-loader": "^1.1.1",
     "webpack": "^4.20.2",
     "webpack-cli": "^3.1.1",
@@ -46,6 +51,7 @@
   },
   "homepage": "https://github.com/andrewchopko/insta-clone#readme",
   "dependencies": {
+    "@babel/polyfill": "^7.0.0",
     "enzyme-to-json": "^3.3.4",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
@@ -53,6 +59,7 @@
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
     "redux": "^4.0.0",
+    "redux-saga": "^0.16.0",
     "styled-components": "^4.0.0-beta.8-unpure"
   }
 }
