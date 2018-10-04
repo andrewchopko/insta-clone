@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<ForwardRef>
+  <ForwardRef>
+    <ForwardRef>
+      <ForwardRef>
+        <i
+          className="fab fa-instagram"
+          height="40px"
+          width="40px"
+        />
+      </ForwardRef>
+      <ForwardRef>
+        <Link
+          replace={false}
+          to="/"
+        >
+          Insta clone
+        </Link>
+      </ForwardRef>
+    </ForwardRef>
+    <ForwardRef>
+      <ForwardRef
+        placeholder="пошук"
+        type="text"
+      />
+    </ForwardRef>
+    <ForwardRef>
+      <ForwardRef>
+        <i
+          className="far fa-heart"
+        />
+      </ForwardRef>
+      <ForwardRef>
+        <Link
+          replace={false}
+          to="/auth"
+        >
+          <i
+            className="far fa-compass"
+          />
+        </Link>
+      </ForwardRef>
+      <ForwardRef>
+        <Link
+          replace={false}
+          to="/profile"
+        >
+          <i
+            className="far fa-user"
+          />
+        </Link>
+      </ForwardRef>
+    </ForwardRef>
+  </ForwardRef>
+</ForwardRef>
+`;
