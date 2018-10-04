@@ -7,7 +7,6 @@ import { bindActionCreators } from "redux";
 import { gettingLogInData } from "../../store/actions/loginAction";
 
 class LoginPage extends Component {
-
   state = {
     username: "",
     password: ""
