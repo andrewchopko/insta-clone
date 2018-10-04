@@ -1,17 +1,27 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
 import styled from "styled-components";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
-export class Header extends Component {
+class Header extends Component {
   render() {
-    return <MainHeader>
+    return (
+      <MainHeader>
         <Container>
           <HeaderLogo>
             <Icon>
               <i width="40px" height="40px" className="fab fa-instagram" />
             </Icon>
             <Item>
-              <Link to="/" style={{ textDecoration: "none", color: "#454f5e", fontWeight: '500' }}>Insta clone</Link>
+              <Link
+                to="/"
+                style={{
+                  textDecoration: "none",
+                  color: "#454f5e",
+                  fontWeight: "500"
+                }}
+              >
+                Insta clone
+              </Link>
             </Item>
           </HeaderLogo>
           <HeaderSearch>
@@ -24,19 +34,26 @@ export class Header extends Component {
               </Link>
             </Icon>
             <Icon>
-              <Link to="/login" style={{ textDecoration: "none", color: "#454f5e" }}>
+              <Link
+                to="/login"
+                style={{ textDecoration: "none", color: "#454f5e" }}
+              >
                 <i className="far fa-compass" />
               </Link>
             </Icon>
 
             <Icon>
-              <Link to="/profile" style={{ textDecoration: "none", color: "#454f5e" }}>
+              <Link
+                to="/profile"
+                style={{ textDecoration: "none", color: "#454f5e " }}
+              >
                 <i className="far fa-user" />
               </Link>
             </Icon>
           </HeaderNav>
         </Container>
-      </MainHeader>;
+      </MainHeader>
+    );
   }
 }
 
@@ -133,4 +150,4 @@ const Item = styled.div`
   margin-left: 5px;
   color: black;
 `;
-export default Header
+export default Header;
