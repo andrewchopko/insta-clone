@@ -7,7 +7,6 @@ export class SignUpPage extends Component {
     chosen: true 
   };
   
-
   render() {
     return <Wrapper>
         <Container>
