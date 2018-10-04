@@ -5,7 +5,7 @@ import LoginPage from "../AuthPage/LoginPage";
 import SignUpPage from "../AuthPage/SignUpPage";
 import Profile from "../Profile/Profile";
 
-export class App extends Component {
+class App extends Component {
   render() {
     return (
       <BrowserRouter>

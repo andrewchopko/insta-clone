@@ -2,9 +2,10 @@ import React, { Component } from "react";
 import Header from "../Home/Header";
 import styled from "styled-components";
 
-export class Profile extends Component {
+class Profile extends Component {
   render() {
-    return <Wrapper>
+    return (
+      <Wrapper>
         <Header />
         <User>
           <ProfileImg />
@@ -23,10 +24,10 @@ export class Profile extends Component {
         </User>
         <Bar>
           <PublicsBar>
-              <Li>Публикаций</Li>
-              <Li>IGTV</Li>
-              <Li>Сохранено</Li>
-              <Li>Отметки</Li>
+            <Li>Публикаций</Li>
+            <Li>IGTV</Li>
+            <Li>Сохранено</Li>
+            <Li>Отметки</Li>
           </PublicsBar>
           <Content>
             <Item />
@@ -37,14 +38,15 @@ export class Profile extends Component {
             <Item />
           </Content>
         </Bar>
-      </Wrapper>;
+      </Wrapper>
+    );
   }
 }
 const Wrapper = styled.section`
   display: flex;
   flex-direction: column;
   width: 100%;
-  background: #FAFAFA;
+  background: #fafafa;
   font-family: "Krub", sans-serif;
 `;
 const User = styled.div`
@@ -213,6 +215,5 @@ const Item = styled.img`
     margin-bottom: 10px;
   }
 `;
-
 
 export default Profile;

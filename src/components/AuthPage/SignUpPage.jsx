@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { gettingSignUpData } from "../../store/actions/signupAction";
 
-export class SignUpPage extends Component {
+class SignUpPage extends Component {
   state = {
     chosen: true
   };

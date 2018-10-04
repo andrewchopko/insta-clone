@@ -2,14 +2,16 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
 import Header from "./Header";
-import Line from '../Line/Line'
+import Line from "../Line/Line";
 
-export class Home extends Component {
+class Home extends Component {
   render() {
-    return <Wrapper>
-      <Header />
-      <Line/>
-      </Wrapper>;
+    return (
+      <Wrapper>
+        <Header />
+        <Line />
+      </Wrapper>
+    );
   }
 }
 

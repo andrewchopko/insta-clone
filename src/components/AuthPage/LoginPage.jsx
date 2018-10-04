@@ -6,7 +6,8 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { gettingLogInData } from "../../store/actions/loginAction";
 
-export class LoginPage extends Component {
+class LoginPage extends Component {
+
   state = {
     username: "",
     password: ""
@@ -51,7 +52,7 @@ export class LoginPage extends Component {
             <A>
               <Link
                 to="/signup"
-                style={{ color: "#3294EA", fontWeight: "700" }}
+                style={{ color: '#3294EA', fontWeight: '700' }}
               >
                 Sign Up
               </Link>
