@@ -4,7 +4,22 @@ import Comment from "../Comments";
 
 class Photo extends Component {
   state = {
-    comment: ""
+    comment: "",
+    images: [
+      {
+        id: 0,
+        src: 'http://vacation-dpl.com/wp-content/uploads/2018/08/Image-17A.jpg'
+      },
+      {
+        id: 1,
+        src: 'https://i.pinimg.com/originals/10/ab/87/10ab876d7ebe3eab9aaed94b73ee31c4.jpg'
+      },
+      {
+        id: 2,
+        src: 'https://www.unilad.co.uk/wp-content/uploads/2018/07/Katarina-1.png'
+      }
+    ],
+    img_id: 0
   };
 
   handleComment = e => {
@@ -21,15 +36,72 @@ class Photo extends Component {
       }
     }
   };
+  nextPhoto = () => {
+    this.setState({
+      img_id: this.state.img_id + 1
+    })
+  }
+  previousPhoto = () => {
+    this.setState({
+      img_id: this.state.img_id - 1
+    })
+  }
 
   render() {
+
+    const images = this.state.images.map((item, index) => {
+
+
+      if (this.state.img_id === index) {
+        return (
+
+          <Styled_img
+            key={item.id}
+            src={item.src}
+          >
+
+          </Styled_img>
+
+
+        )
+      }
+    }
+    )
+
     const comments = this.props.comments.map((item, key) => {
       return <Comment key={key} item={item.comment} name={this.props.name} />;
     });
 
+    const controls = () => {
+      if (this.state.images.length - 1 > this.state.img_id) {
+        return (
+          <div>
+            <i className="fas fa-arrow-circle-right" onClick={this.nextPhoto} ></i>
+            <i className="fas fa-arrow-circle-left" onClick={this.previousPhoto}></i>
+          </div>
+        )
+      }
+    }
+
+
     return (
       <Img_container>
-        <Img src="http://vacation-dpl.com/wp-content/uploads/2018/08/Image-17A.jpg" />
+        <Img>
+          {images}
+        </Img>
+        <Controls_container>
+        {(this.state.images.length - 1 > this.state.img_id) ?
+          (this.state.img_id === 0) ?
+            <i className="fas fa-arrow-circle-right fa-2x" onClick={this.nextPhoto} ></i> :
+            <div >
+              <i className="fas fa-arrow-circle-left fa-2x" onClick={this.previousPhoto}></i>
+              <i className="fas fa-arrow-circle-right fa-2x" onClick={this.nextPhoto} ></i>
+              </div>
+          : <i className="fas fa-arrow-circle-left fa-2x" onClick={this.previousPhoto}></i>
+        }
+        </Controls_container>
+        
+
         <Content>
           <Panl>
             <Profile_img />
@@ -43,8 +115,8 @@ class Photo extends Component {
             {this.props.liked ? (
               <I className="fas fa-heart fa-2x" onClick={this.props.like} />
             ) : (
-              <I className="far fa-heart fa-2x" onClick={this.props.like} />
-            )}
+                <I className="far fa-heart fa-2x" onClick={this.props.like} />
+              )}
             <I className="far fa-comment fa-2x" />
             <I className="fas fa-cloud-upload-alt fa-2x" />
           </Icons>
@@ -61,6 +133,15 @@ class Photo extends Component {
   }
 }
 
+const Controls_container= styled.div `
+display: flex;
+margin-left: 10px;
+
+align-items: center;
+
+`
+
+
 const Img_container = styled.div`
   height: 500px;
   width: 700px;
@@ -72,7 +153,7 @@ const Img_container = styled.div`
   }
 `;
 
-const Img = styled.img`
+const Img = styled.div`
   height: 100%;
   width: auto;
 `;
@@ -149,5 +230,10 @@ const Likes = styled.p`
   margin-left: 30px;
   width: 100px;
 `;
+const Styled_img = styled.img`
+height: 100%;
+width: auto;
+`
+
 
 export default Photo;
